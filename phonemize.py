@@ -16,6 +16,7 @@ class phonemize_better:
         print("loading checkpoint . . .")
         checkpoint = compile_model.load_model_split()
         self.model.load_state_dict(checkpoint)
+        del checkpoint
         print("checkpoint loaded")
 
     def load_tokenizer(self):
