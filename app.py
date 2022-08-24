@@ -30,6 +30,7 @@ async def inference(userinput: SpeakerInput):
     userinput = userinput.dict()
     wav = userinput["wav"]
     wav = np.array(wav)
-    phonemize.speak_to_phoneme(wav)
-    wav = jsonable_encoder(wav.tolist())
-    return JSONResponse(wav)
+    t, p =phonemize.speak_to_phoneme(wav)
+    tp = [t, p]
+    tp = jsonable_encoder(tp.tolist())
+    return JSONResponse(tp)
