@@ -19,12 +19,12 @@ class phonemize_better:
 
     def load_tokenizer(self):
         # model과 tokenizer pre-trained된 것 가져오기
-        tokenizer = Wav2Vec2Tokenizer.from_pretrained("/tokenizer")
+        tokenizer = Wav2Vec2Tokenizer.from_pretrained("checkpoints/tokenizer")
         return tokenizer
 
     def load_model(self):
         # loading wav2vec2 model with no empty binary checkpoint file
-        model = Wav2Vec2ForCTC.from_pretrained("/model", ignore_mismatched_sizes = True)
+        model = Wav2Vec2ForCTC.from_pretrained("checkpoints/model", ignore_mismatched_sizes = True)
         return model
 
     def speak_to_phoneme(self, audio, tokenizer, model, is_stress=False):

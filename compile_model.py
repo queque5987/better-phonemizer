@@ -1,18 +1,18 @@
 import torch
 import os
 
-def save_model_split():
-    loaded = torch.load("pytorch_model.bin")
-    for i, l in enumerate(loaded):
-        # print("{}".format(l))
-        tensor = loaded[l]
-        # print()
-        torch.save(tensor, 'model_splited/{}'.format(l))
+# def save_model_split():
+#     loaded = torch.load("pytorch_model.bin")
+#     for i, l in enumerate(loaded):
+#         # print("{}".format(l))
+#         tensor = loaded[l]
+#         # print()
+#         torch.save(tensor, 'model_splited/{}'.format(l))
 
 def load_model_split():
     temp = []
     pytorch_model = []
-    path = "model_splited"
+    path = "checkpoints/model_splited"
     for m in os.listdir(path):
         # print("{}".format(m))
         loaded = torch.load(path + "/" + m)
@@ -23,17 +23,17 @@ def load_model_split():
     print("state_dict loading completed")
     return dict(pytorch_model)
 
-def dict_clean():
-    temp = []
-    pytorch_model = []
-    path = "model_splited"
-    for m in os.listdir(path):
-        # print("{}".format(m))
-        # loaded = torch.load(path + "/" + m)
-        temp = [m, torch.tensor(0)]
-        pytorch_model.append(temp)
-        temp = []
-    torch.save(dict(pytorch_model), "model_splited/pytorch_model.bin")
+# def dict_clean():
+#     temp = []
+#     pytorch_model = []
+#     path = "model_splited"
+#     for m in os.listdir(path):
+#         # print("{}".format(m))
+#         # loaded = torch.load(path + "/" + m)
+#         temp = [m, torch.tensor(0)]
+#         pytorch_model.append(temp)
+#         temp = []
+#     torch.save(dict(pytorch_model), "model_splited/pytorch_model.bin")
 
 # if __name__ == "__main__":
     # loaded = torch.load("model\pytorch_model.bin")
