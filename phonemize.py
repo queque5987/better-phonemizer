@@ -8,16 +8,18 @@ import compile_model
 
 class phonemize_better:
     def __init__(self):
-        self.tokenizer = self.load_tokenizer()
-        print("loaded_tokenizer : {}".format(self.tokenizer.__class__.__name__))
         self.model = self.load_model()
         print("loaded_model : {}".format(self.model.__class__.__name__))
 
         print("loading checkpoint . . .")
         checkpoint = compile_model.load_model_split()
+        print("loading Model . . .")
         self.model.load_state_dict(checkpoint)
         del checkpoint
         print("checkpoint loaded")
+
+        self.tokenizer = self.load_tokenizer()
+        print("loaded_tokenizer : {}".format(self.tokenizer.__class__.__name__))        
 
     def load_tokenizer(self):
         # model과 tokenizer pre-trained된 것 가져오기
