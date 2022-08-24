@@ -6,7 +6,6 @@ import numpy as np
 import compile_model
 
 class phonemize_better:
-
     def __init__(self):
         self.tokenizer = self.load_tokenizer()
         print("loaded_tokenizer : {}".format(self.tokenizer.__class__.__name__))
