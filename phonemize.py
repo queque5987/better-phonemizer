@@ -1,3 +1,4 @@
+from lib2to3.pgen2 import token
 from transformers import Wav2Vec2ForCTC, Wav2Vec2Tokenizer
 from phonemizer import phonemize
 import torch
@@ -27,7 +28,9 @@ class phonemize_better:
         model = Wav2Vec2ForCTC.from_pretrained("checkpoints/model", ignore_mismatched_sizes = True)
         return model
 
-    def speak_to_phoneme(self, audio, tokenizer, model, is_stress=False):
+    def speak_to_phoneme(self, audio, is_stress=False):
+        tokenizer = self.tokenizer
+        model = self.model
         assert type(audio) == np.ndarray
         # 유저 발화 파일 tokenizer에 넣기
         input_values = tokenizer(audio, return_tensors = "pt").input_values
