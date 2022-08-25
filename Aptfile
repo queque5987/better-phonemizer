@@ -1,3 +1,2 @@
-espeak-ng
+espeak-ng -f https://fossies.org/linux/privat/espeak-ng-1.51.1.tar.gz/
 pulseaudio
-ffmpeg
