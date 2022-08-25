@@ -29,7 +29,7 @@ async def inference(userinput: SpeakerInput):
     userinput = userinput.dict()
     transcription = userinput["transcription"]
     phoneme = text_to_phoneme(transcription)
-    phoneme = jsonable_encoder(phoneme.tolist())
+    phoneme = jsonable_encoder(phoneme)
     return JSONResponse(phoneme)
 
 # @app.get('/inference/')
