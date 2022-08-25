@@ -6,5 +6,5 @@ numpy
 uvicorn
 favicon
 gunicorn
-transformers == 4.21.1
-phonemizer == 3.2.1
+# transformers == 4.21.1
+# phonemizer == 3.2.1
