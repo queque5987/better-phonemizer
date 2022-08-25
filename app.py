@@ -1,6 +1,6 @@
 from fastapi import FastAPI
 from pydantic import BaseModel
-from fastapi.responses import JSONResponse
+from fastapi.responses import JSONResponse, FileResponse
 from fastapi.encoders import jsonable_encoder
 
 from utils import text_to_phoneme
@@ -12,42 +12,21 @@ class SpeakerInput(BaseModel):
 
 @app.get('/')
 def index():
-    return "This is the phonemizer part of better-project API."
+    return FileResponse("index.html")
 
 @app.get('/inference')
 async def inference(userinput: SpeakerInput):
     """
     @request
-        user voice sample {list}
-            {array} wav, {int} sample_rate loaded by librosa
+        transcription {str}
+            text converting to phoneme
     @response
-        user voice embedding {list}
-            {ndarray} embedding converted into {list} so that it could be sent as a request;
-
-    **This method returns user utterance embedding inferenced by Speaker Encoder**
+        phonemes {str}
+            converted/phonemized text
     """
+
     userinput = userinput.dict()
     transcription = userinput["transcription"]
     phoneme = text_to_phoneme(transcription)
     phoneme = jsonable_encoder(phoneme)
     return JSONResponse(phoneme)
-
-# @app.get('/inference/')
-# async def inference(userinput: SpeakerInput):
-#     """
-#     @request
-#         user voice sample {list}
-#             {array} wav, {int} sample_rate loaded by librosa
-#     @response
-#         user voice embedding {list}
-#             {ndarray} embedding converted into {list} so that it could be sent as a request;
-
-#     **This method returns user utterance embedding inferenced by Speaker Encoder**
-#     """
-#     userinput = userinput.dict()
-#     input_values = userinput["input_values"]
-#     input_values = torch.tensor(input_values)
-#     phmzr = phonemize.phonemize_better()
-#     logits = phmzr.inference(input_values)
-#     logits = jsonable_encoder(logits.tolist())
-#     return JSONResponse(logits)
