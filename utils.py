@@ -1,6 +1,8 @@
-from phonemizer import phonemize
+# from phonemizer import phonemize
+import espeak_phonemizer
 
 def text_to_phoneme(transcription, is_stress=False):
     assert type(transcription) == str
-    phoneme = phonemize(transcription, with_stress=is_stress).rstrip()
+    pmzr = espeak_phonemizer.phonemizer()
+    phoneme = pmzr.phonemize(transcription).rstrip()
     return phoneme

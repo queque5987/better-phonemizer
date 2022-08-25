@@ -4,5 +4,5 @@ numpy
 uvicorn
 favicon
 gunicorn
+espeak_phonemizer
 phonemizer == 3.2.1
-py-espeak-ng
