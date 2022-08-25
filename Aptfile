@@ -1,7 +1,4 @@
-libsndfile1
-libsndfile1-dev
 libpulse0
 pulseaudio
-libespeak-dev
 libespeak-ng1
 espeak
