@@ -3,5 +3,4 @@ libsndfile1-dev
 libpulse0
 libespeak-dev
 libespeak-ng1
-libespeak-ng.so.1
 espeak
