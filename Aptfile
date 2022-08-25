@@ -4,6 +4,4 @@ libespeak-ng1
 espeak
 libsndfile1
 libsndfile1-dev
-ffmpeg
-libvpx7
 pulseaudio
