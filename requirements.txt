@@ -5,3 +5,4 @@ uvicorn
 favicon
 gunicorn
 phonemizer == 3.2.1
+espeak
