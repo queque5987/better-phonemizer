@@ -1,7 +1,7 @@
-from lib2to3.pgen2 import token
-from transformers import Wav2Vec2ForCTC, Wav2Vec2Tokenizer
-from phonemizer import phonemize
-import torch
+# from lib2to3.pgen2 import token
+from transformers import Wav2Vec2ForCTC #, Wav2Vec2Tokenizer
+# from phonemizer import phonemize
+# import torch
 import numpy as np
 
 import compile_model
@@ -18,47 +18,50 @@ class phonemize_better:
         del checkpoint
         print("checkpoint loaded")
 
-        self.tokenizer = self.load_tokenizer()
-        print("loaded_tokenizer : {}".format(self.tokenizer.__class__.__name__))        
+        # self.tokenizer = self.load_tokenizer()
+        # print("loaded_tokenizer : {}".format(self.tokenizer.__class__.__name__))        
 
-    def load_tokenizer(self):
-        # model과 tokenizer pre-trained된 것 가져오기
-        tokenizer = Wav2Vec2Tokenizer.from_pretrained("checkpoints/tokenizer")
-        return tokenizer
+    # def load_tokenizer(self):
+    #     # model과 tokenizer pre-trained된 것 가져오기
+    #     tokenizer = Wav2Vec2Tokenizer.from_pretrained("checkpoints/tokenizer")
+    #     return tokenizer
 
     def load_model(self):
         # loading wav2vec2 model with no empty binary checkpoint file
         model = Wav2Vec2ForCTC.from_pretrained("checkpoints/model", ignore_mismatched_sizes = True)
         return model
 
-    def speak_to_phoneme(self, audio, is_stress=False):
-        tokenizer = self.tokenizer
-        model = self.model
-        assert type(audio) == np.ndarray
-        # 유저 발화 파일 tokenizer에 넣기
-        input_values = tokenizer(audio, return_tensors = "pt").input_values
+    # def speak_to_phoneme(self, audio, is_stress=False):
+    #     # tokenizer = self.tokenizer
+    #     model = self.model
+    #     assert type(audio) == np.ndarray
+    #     # 유저 발화 파일 tokenizer에 넣기
+    #     input_values = tokenizer(audio, return_tensors = "pt").input_values
 
-        # 모델을 통해 logit값 출력(non_normalized)
-        logits = model(input_values).logits
+    #     # 모델을 통해 logit값 출력(non_normalized)
+    #     logits = model(input_values).logits
 
-        # argmax를 통해 가장 가능성 높은 logits 들을 예측 logits으로
-        prediction = torch.argmax(logits, dim = -1)
+    #     # argmax를 통해 가장 가능성 높은 logits 들을 예측 logits으로
+    #     prediction = torch.argmax(logits, dim = -1)
 
-        # decoeding해서 text로 변환
-        transcription = tokenizer.batch_decode(prediction)[0]
+    #     # decoeding해서 text로 변환
+    #     transcription = tokenizer.batch_decode(prediction)[0]
 
-        print(transcription)
-        print(phoneme)
+    #     print(transcription)
+    #     print(phoneme)
 
-        phoneme = self.text_to_phoneme(transcription, is_stress)
-        return transcription, phoneme
+    #     phoneme = self.text_to_phoneme(transcription, is_stress)
+    #     return transcription, phoneme
 
-    # text -> 음소
-    def text_to_phoneme(self, transcription, is_stress=False):
-        assert type(transcription) == str
-        # 라이브러리를 활용해서 phoneme 변환
-        phoneme = phonemize(transcription, with_stress=is_stress).rstrip()
-        return phoneme
+    def inference(self, input_values):
+        print(self.model(input_values).logits)
+        return self.model(input_values).logits
+    # # text -> 음소
+    # def text_to_phoneme(self, transcription, is_stress=False):
+    #     assert type(transcription) == str
+    #     # 라이브러리를 활용해서 phoneme 변환
+    #     phoneme = phonemize(transcription, with_stress=is_stress).rstrip()
+    #     return phoneme
 
 # if __name__ == "__main__":
 #     # model = load_model()

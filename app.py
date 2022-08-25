@@ -9,7 +9,7 @@ import phonemize
 app = FastAPI()
 
 class SpeakerInput(BaseModel):
-    wav: list
+    input_values: list
 
 @app.get('/')
 def index():
@@ -28,10 +28,9 @@ async def inference(userinput: SpeakerInput):
     **This method returns user utterance embedding inferenced by Speaker Encoder**
     """
     userinput = userinput.dict()
-    wav = userinput["wav"]
-    wav = np.array(wav)
+    input_values = userinput["input_values"]
+    input_values = np.array(input_values)
     phmzr = phonemize.phonemize_better()
-    t, p =phmzr.speak_to_phoneme(wav)
-    tp = [t, p]
-    tp = jsonable_encoder(tp.tolist())
-    return JSONResponse(tp)
+    logits = phmzr.inference(input_values)
+    logits = jsonable_encoder(logits.tolist())
+    return JSONResponse(logits)
