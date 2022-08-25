@@ -2,7 +2,7 @@ from fastapi import FastAPI
 from pydantic import BaseModel
 from fastapi.responses import JSONResponse
 from fastapi.encoders import jsonable_encoder
-import numpy as np
+import torch
 
 import phonemize
 
@@ -29,7 +29,7 @@ async def inference(userinput: SpeakerInput):
     """
     userinput = userinput.dict()
     input_values = userinput["input_values"]
-    input_values = np.array(input_values)
+    input_values = torch.tensor(input_values)
     phmzr = phonemize.phonemize_better()
     logits = phmzr.inference(input_values)
     logits = jsonable_encoder(logits.tolist())
