@@ -1,6 +1,6 @@
 libsndfile1
 libsndfile1-dev
-libpulse0
+libpulse0:i386
 libespeak-dev
 libespeak-ng1
 espeak
