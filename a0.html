@@ -38,10 +38,10 @@
                   body: jsonString
                 }).then(function(response){
                   console.log(response.json());
-                  return response.json();
-                }).catch((error) =>
-                  console.log(error)
-                )
+                }).then(function(result){
+                  console.log(result);
+                  return result;
+                })
                 
               }
 
@@ -52,7 +52,7 @@
                 alert(text.value);
                 phn = printName(text.value);
                 console.log(phn);
-                phoneme.innerText = phn.transcription;
+                phoneme.innerText = phn.Promise;
               });
               
             </script>
