@@ -1,5 +1,6 @@
-function printName()  {
-  const name = document.getElementById('text').value;
+function printName(text)  {
+  // const name = document.getElementById('text').value;
+  const name = text
   // const formData = new FormData();
   // var dictObject = {}
   // dictObject['transcription'] = 'Jack and Jill ran up the hill.';
@@ -24,6 +25,9 @@ function printName()  {
   // })
   document.getElementById("phoneme").innerText = data;
 }
+document.getElementById("transcription").addEventListener('change', function(){
+  printName(this.value)
+});
 
 
 // // POST 메서드 구현 예제
