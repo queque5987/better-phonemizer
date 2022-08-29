@@ -24,7 +24,7 @@ def index():
     return FileResponse("a0.html")
 
 @app.post('/inference')
-async def inference(userinput: SpeakerInput):
+def inference(userinput: SpeakerInput):
     """
     @request
         transcription {str}
@@ -37,7 +37,7 @@ async def inference(userinput: SpeakerInput):
     userinput = userinput.dict()
     transcription = userinput["transcription"]
     print("inserted transcription: {}".format(transcription))
-    phoneme = await text_to_phoneme(transcription)
+    phoneme = text_to_phoneme(transcription)
     print("sending response: {}".format(phoneme))
     phoneme = jsonable_encoder(phoneme)
     return JSONResponse(phoneme)
