@@ -38,7 +38,7 @@ def inference(userinput: SpeakerInput):
     userinput = userinput.dict()
     transcription = userinput["transcription"]
     print("inserted transcription: {}".format(transcription))
-    phoneme = text_to_phoneme(transcription)
+    phoneme = text_to_phoneme(transcription)[0]
     print("sending response: {}".format(phoneme))
     # phoneme = jsonable_encoder(phoneme)
     phoneme_json = json.dumps({
