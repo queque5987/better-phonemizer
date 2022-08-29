@@ -7,24 +7,21 @@
     <h1>Better-API-Phonemizer</h1><br>
   </head>
   <body>
-    <!-- <script type="text/javascript" src ="./Scripts/a0.js"></script> -->
     <strong>@request<br>
-        &nbsp;&nbsp;&#9;transcription: transcription to phonemize @type {str}<br>
-
+        &nbsp;&nbsp;transcription: transcription to phonemize @type {str}<br>
             @response<br>
-        &nbsp;&nbsp;wav file as ndarray @type {list}<br></strong><br>
-        &nbsp;&nbsp;&#9;used <a href = "https://pypi.org/project/eng-to-ipa/">eng_to_ipa</a> library
+        &nbsp;&nbsp;transcription: phonemized transcription @type {str}<br></strong>
+        <!-- &nbsp;&nbsp;&#9;used <a href = "https://pypi.org/project/eng-to-ipa/">eng_to_ipa</a> library<br> -->
 
-            &nbsp;&nbsp;&#9;<div style="width:52px; background-color:cyan"><a href = "https://github.com/queque5987/better-phonemizer">GitHub</a></div>
-            &nbsp;&nbsp;&nbsp;pyw5987@gmail.com
-            <div id="divA">Testing</div>
-            
-            <input type = "text" id = "transcription">
-            <input type = "submit" id = "submit"><br>
-            <div id = "phoneme"></div>
+        <div id="testingTitle"><br>&nbsp;&nbsp;&#9;Text to Phoneme example</div>
+        &nbsp;&nbsp;&#9;<input type = "text" id = "transcription">
+        <input type = "submit" id = "submit" value = "convert to phoneme"><br>
+        &nbsp;&nbsp;&#9;<span style = "background-color: lightskyblue;" id = "phoneme"></span><br>
 
+        &nbsp;&nbsp;&#9;<a href = "https://github.com/queque5987/better-phonemizer"><img src = "https://github.com/queque5987/better-test/blob/main/github%20(1).png?raw=true" width = "150" height = "60" alt = "GitHub: queque5987"></a><br>
+        &nbsp;&nbsp;&nbsp;pyw5987@gmail.com
+        
             <script type = "text/javascript">
-              
               function printName(text)  {
                 const name = text
                 var obj = new Object();
@@ -37,32 +34,18 @@
                   },
                   body: jsonString
                 }).then((response) => response.json()
-                  // console.log(response.json());
-                  // return response.json();
-                )
-                // .then(data =>{
-                //   // console.log(data)
-                //   return data
-                // });
-                // return res;
-                .then(function(data){
+                ).then(function(data){
                   var phoneme = document.getElementById("phoneme");
-                  // console.log(typeof data);
                   var res = JSON.parse(data)
                   phoneme.innerText = res.transcription;
                 })
               }
-
               var trs = document.getElementById("submit");
               var text = document.getElementById("transcription");
-              // var phoneme = document.getElementById("phoneme");
               trs.addEventListener('click', function(){
                 alert(text.value);
                 printName(text.value);
-                // console.log(phn);
-                // phoneme.innerText = phn;
               });
-              
             </script>
 
   </body>
