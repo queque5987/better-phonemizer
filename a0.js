@@ -1,29 +1,32 @@
-function printName(text)  {
-  // const name = document.getElementById('text').value;
-  const name = text
-  // const formData = new FormData();
-  // var dictObject = {}
-  // dictObject['transcription'] = 'Jack and Jill ran up the hill.';
-  // const speakerInput = {
-  //   transcription: 'Jack and Jill ran up the hill.'
-  // }
-  // formData.append('value', dictObject)
-  var obj = new Object();
-  obj.transcription = name;
-  var jsonString = JSON.stringify(obj)
-  fetch('https://better-phonemizer.herokuapp.com/inference', {
-    method: 'POST',
-    headers: {
-    'Content-Type': 'application/json',
-    },
-    body: jsonString
-  })
-  .then((response) => response.json())
-  .then((data) => console.log(data));
-  // .then((result) => {
-    // console.log('성공', result)
-  // })
-  document.getElementById("phoneme").innerText = data;
+// function printName(text)  {
+//   // const name = document.getElementById('text').value;
+//   const name = text
+//   // const formData = new FormData();
+//   // var dictObject = {}
+//   // dictObject['transcription'] = 'Jack and Jill ran up the hill.';
+//   // const speakerInput = {
+//   //   transcription: 'Jack and Jill ran up the hill.'
+//   // }
+//   // formData.append('value', dictObject)
+//   var obj = new Object();
+//   obj.transcription = name;
+//   var jsonString = JSON.stringify(obj)
+//   fetch('https://better-phonemizer.herokuapp.com/inference', {
+//     method: 'POST',
+//     headers: {
+//     'Content-Type': 'application/json',
+//     },
+//     body: jsonString
+//   })
+//   .then((response) => response.json())
+//   .then((data) => console.log(data));
+//   // .then((result) => {
+//     // console.log('성공', result)
+//   // })
+//   document.getElementById("phoneme").innerText = data;
+// }
+function printName(text){
+  document.getElementById("phoneme").innerText = text;
 }
 document.getElementById("transcription").addEventListener('change', function(){
   printName(this.value)
