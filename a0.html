@@ -39,9 +39,12 @@
                 }).then(function(response){
                   console.log(response.json());
                   return response;
-                }).then(data =>{
-                  console.log(data)
+                }).then(function(result) {
+                  console.log(result + 1);
                 });
+                // .then(data =>{
+                //   console.log(data)
+                // });
                 
               }
 
