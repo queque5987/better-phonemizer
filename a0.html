@@ -39,8 +39,9 @@
                 }).then((response) => response.json()
                   // console.log(response.json());
                   // return response.json();
-                ).then((data) => console.log(data)
-                ).then((result) => console.log(result))
+                ).then(function(data){
+                  return data;
+                })
                 // .then(data =>{
                 //   console.log(data)
                 // });
@@ -53,8 +54,8 @@
               trs.addEventListener('click', function(){
                 alert(text.value);
                 phn = printName(text.value);
-                // console.log(phn);
-                // phoneme.innerText = phn;
+                console.log(phn);
+                phoneme.innerText = phn;
               });
               
             </script>
