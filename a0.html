@@ -36,12 +36,13 @@
                   'Content-Type': 'application/json',
                   },
                   body: jsonString
-                }).then((response) => 
-                  console.log(response.json())
-                ).catch((error) =>
+                }).then(function(response){
+                  console.log(response.json());
+                  return response.json();
+                }).catch((error) =>
                   console.log(error)
                 )
-                return response.json()
+                
               }
 
               var trs = document.getElementById("submit");
