@@ -41,3 +41,18 @@ async def inference(userinput: SpeakerInput):
     print("sending response: {}".format(phoneme))
     phoneme = jsonable_encoder(phoneme)
     return JSONResponse(phoneme)
+
+@app.post('/test')
+async def test(userinput: SpeakerInput):
+    """
+    @request
+        transcription {str}
+            text converting to phoneme
+    @response
+        phonemes {str}
+            converted/phonemized text
+    """
+    print("service requested.")
+    print(userinput.json())
+    # phoneme = jsonable_encoder(phoneme)
+    return JSONResponse(userinput)
