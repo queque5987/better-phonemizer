@@ -23,7 +23,7 @@ class SpeakerInput(BaseModel):
 def index():
     return FileResponse("index.html")
 
-@app.get('/inference')
+@app.post('/inference')
 async def inference(userinput: SpeakerInput):
     """
     @request
@@ -36,6 +36,6 @@ async def inference(userinput: SpeakerInput):
 
     userinput = userinput.dict()
     transcription = userinput["transcription"]
-    phoneme = text_to_phoneme(transcription)
+    phoneme = await text_to_phoneme(transcription)
     phoneme = jsonable_encoder(phoneme)
     return JSONResponse(phoneme)
