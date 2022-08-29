@@ -47,8 +47,9 @@
                 // return res;
                 .then(function(data){
                   var phoneme = document.getElementById("phoneme");
-                  console.log(typeof data);
-                  phoneme.innerText = data;
+                  // console.log(typeof data);
+                  var res = JSON.parse(data)
+                  phoneme.innerText = res.transcription;
                 })
               }
 
