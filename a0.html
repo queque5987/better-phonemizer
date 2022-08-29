@@ -46,7 +46,7 @@
               trs.addEventListener('click', function(){
                 alert(text.value);
                 phn = printName(text.value);
-                jsf = JSON.stringify(phn);
+                jsf = phn.status;
                 phoneme.innerText = jsf;
               });
               
