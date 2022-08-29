@@ -22,7 +22,7 @@ class SpeakerInput(BaseModel):
 
 @app.get('/')
 def index():
-    return FileResponse("a0.html")
+    return FileResponse("index.html")
 
 @app.post('/inference')
 def inference(userinput: SpeakerInput):
