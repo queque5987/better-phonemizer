@@ -33,9 +33,11 @@ async def inference(userinput: SpeakerInput):
         phonemes {str}
             converted/phonemized text
     """
-
+    print("service requested.")
     userinput = userinput.dict()
     transcription = userinput["transcription"]
+    print("inserted transcription: {}".format(transcription))
     phoneme = await text_to_phoneme(transcription)
+    print("sending response: {}".format(phoneme))
     phoneme = jsonable_encoder(phoneme)
     return JSONResponse(phoneme)
