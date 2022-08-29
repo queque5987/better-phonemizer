@@ -30,7 +30,7 @@
                 var obj = new Object();
                 obj.transcription = name;
                 var jsonString = JSON.stringify(obj)
-                fetch('https://better-phonemizer.herokuapp.com/inference', {
+                var res = fetch('https://better-phonemizer.herokuapp.com/inference', {
                   method: 'POST',
                   headers: {
                   'Content-Type': 'application/json',
@@ -41,10 +41,10 @@
                   // return response.json();
                 )
                 .then(data =>{
-                  console.log(data)
-                  var result = data;
+                  // console.log(data)
+                  return data
                 });
-                return result;
+                return res;
                 // .then(function(data){
                 //   return data;
                 // })
