@@ -38,10 +38,8 @@
                   body: jsonString
                 }).then(function(response){
                   console.log(response.json());
-                  return response;
-                }).then(function(result) {
-                  console.log(result + 1);
-                });
+                  return response.json();
+                })
                 // .then(data =>{
                 //   console.log(data)
                 // });
