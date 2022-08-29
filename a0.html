@@ -39,13 +39,15 @@
                 }).then((response) => response.json()
                   // console.log(response.json());
                   // return response.json();
-                ).then(function(data){
-                  return data;
-                })
-                // .then(data =>{
-                //   console.log(data)
-                // });
-                
+                )
+                .then(data =>{
+                  // console.log(data)
+                  obj.transcription = data;
+                });
+                return obj.transcription;
+                // .then(function(data){
+                //   return data;
+                // })
               }
 
               var trs = document.getElementById("submit");
