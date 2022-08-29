@@ -43,8 +43,12 @@
               var trs = document.getElementById("submit");
               var text = document.getElementById("transcription");
               trs.addEventListener('click', function(){
-                alert(text.value);
                 printName(text.value);
+              });
+              text.addEventListener('keydown', (e)=>{
+                  if (e.keyCode === 13) {
+                      printName(text.value);
+                }  
               });
             </script>
 
