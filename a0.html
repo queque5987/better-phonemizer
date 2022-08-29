@@ -24,12 +24,34 @@
             <div id = "phoneme"></div>
 
             <script type = "text/javascript">
+              
+              function printName(text)  {
+                const name = text
+                var obj = new Object();
+                obj.transcription = name;
+                var jsonString = JSON.stringify(obj)
+                fetch('https://better-phonemizer.herokuapp.com/inference', {
+                  method: 'POST',
+                  headers: {
+                  'Content-Type': 'application/json',
+                  },
+                  body: jsonString
+                })
+                .then((response) => response.json())
+                .then((data) => console.log(data));
+                // .then((result) => {
+                  // console.log('성공', result)
+                // })
+                return(data);
+              }
+
               var trs = document.getElementById("submit");
               var text = document.getElementById("transcription");
               var phoneme = document.getElementById("phoneme");
               trs.addEventListener('click', function(){
                 alert(text.value);
-                phoneme.innerText = text.value;
+                phn = printName(text.value);
+                phoneme.innerText = phn;
               });
               
             </script>
