@@ -21,14 +21,17 @@
             
             <input type = "text" id = "transcription">
             <input type = "submit" id = "submit"><br>
+            <div id = "phoneme"></div>
+
             <script type = "text/javascript">
               var trs = document.getElementById("submit");
               var text = document.getElementById("text");
+              var phoneme = document.getElementById("phoneme");
               trs.addEventListener('click', function(){
-                alert('hello world');
+                alert(text.value);
+                phoneme.innerText = text.value;
               });
               
             </script>
-            <div id = "phoneme"></div>
 
   </body>
