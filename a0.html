@@ -40,19 +40,20 @@
                   // console.log(response.json());
                   // return response.json();
                 )
-                .then(data =>{
-                  // console.log(data)
-                  return data
-                });
-                return res;
-                // .then(function(data){
-                //   return data;
-                // })
+                // .then(data =>{
+                //   // console.log(data)
+                //   return data
+                // });
+                // return res;
+                .then(function(data){
+                  var phoneme = document.getElementById("phoneme");
+                  phoneme.innerText = data;
+                })
               }
 
               var trs = document.getElementById("submit");
               var text = document.getElementById("transcription");
-              var phoneme = document.getElementById("phoneme");
+              // var phoneme = document.getElementById("phoneme");
               trs.addEventListener('click', function(){
                 alert(text.value);
                 phn = printName(text.value);
