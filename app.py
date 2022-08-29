@@ -21,7 +21,7 @@ class SpeakerInput(BaseModel):
 
 @app.get('/')
 def index():
-    return FileResponse("index.html")
+    return FileResponse("a0.html")
 
 @app.post('/inference')
 async def inference(userinput: SpeakerInput):
