@@ -5,6 +5,7 @@ from fastapi.encoders import jsonable_encoder
 from fastapi.middleware.cors import CORSMiddleware
 
 from utils import text_to_phoneme
+import json
 
 app = FastAPI()
 
@@ -39,8 +40,11 @@ def inference(userinput: SpeakerInput):
     print("inserted transcription: {}".format(transcription))
     phoneme = text_to_phoneme(transcription)
     print("sending response: {}".format(phoneme))
-    phoneme = jsonable_encoder(phoneme)
-    return JSONResponse(phoneme)
+    # phoneme = jsonable_encoder(phoneme)
+    phoneme_json = json.dumps({
+        "transcription": phoneme
+    })
+    return JSONResponse(phoneme_json)
 
 @app.post('/test')
 async def test(userinput: SpeakerInput):
