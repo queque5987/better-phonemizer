@@ -7,7 +7,7 @@
     <h1>Better-API-Phonemizer</h1><br>
   </head>
   <body>
-    <script type="text/javascript" src ="./Scripts/a0.js"></script>
+    <!-- <script type="text/javascript" src ="./Scripts/a0.js"></script> -->
     <strong>@request<br>
         &nbsp;&nbsp;&#9;transcription: transcription to phonemize @type {str}<br>
 
@@ -18,8 +18,17 @@
             &nbsp;&nbsp;&#9;<div style="width:52px; background-color:cyan"><a href = "https://github.com/queque5987/better-phonemizer">GitHub</a></div>
             &nbsp;&nbsp;&nbsp;pyw5987@gmail.com
             <div id="divA">Testing</div>
+            
             <input type = "text" id = "transcription">
-            <!-- <input type = "submit" name = "wav_request"><br> -->
+            <input type = "submit" id = "submit"><br>
+            <script type = "text/javascript">
+              var trs = document.getElementById("submit");
+              var text = document.getElementById("text");
+              trs.addEventListener('click', function(){
+                alert('hello world');
+              });
+              
+            </script>
             <div id = "phoneme"></div>
 
   </body>
