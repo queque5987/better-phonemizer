@@ -38,9 +38,7 @@
                   body: jsonString
                 }).then(function(response){
                   console.log(response.json());
-                }).then(function(result){
-                  console.log(result);
-                  return result;
+                  return response;
                 })
                 
               }
