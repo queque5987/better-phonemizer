@@ -36,10 +36,11 @@
                   'Content-Type': 'application/json',
                   },
                   body: jsonString
-                }).then(function(response){
+                }).then((response) => response.json()
                   // console.log(response.json());
-                  return response.json();
-                })
+                  // return response.json();
+                ).then((data) => console.log(data)
+                ).then((result) => console.log(result))
                 // .then(data =>{
                 //   console.log(data)
                 // });
@@ -52,8 +53,8 @@
               trs.addEventListener('click', function(){
                 alert(text.value);
                 phn = printName(text.value);
-                console.log(phn);
-                phoneme.innerText = phn;
+                // console.log(phn);
+                // phoneme.innerText = phn;
               });
               
             </script>
