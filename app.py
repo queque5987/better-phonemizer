@@ -1,3 +1,10 @@
+"""
+    ***************************************************
+    author: Park Young-woong
+    e-mail: pyw5987@gmail.com
+    github: https://github.com/queque5987/better-encoder
+    ***************************************************
+"""
 from fastapi import FastAPI
 from pydantic import BaseModel
 from fastapi.responses import JSONResponse, FileResponse
@@ -45,18 +52,3 @@ def inference(userinput: SpeakerInput):
         "transcription": phoneme
     })
     return JSONResponse(phoneme_json)
-
-@app.post('/test')
-async def test(userinput: SpeakerInput):
-    """
-    @request
-        transcription {str}
-            text converting to phoneme
-    @response
-        phonemes {str}
-            converted/phonemized text
-    """
-    print("service requested.")
-    print(userinput.json())
-    # phoneme = jsonable_encoder(phoneme)
-    return JSONResponse(userinput)
